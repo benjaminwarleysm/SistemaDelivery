@@ -1,8 +1,10 @@
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import model.Cliente;
+
+import java.util.Scanner;
 
 public class ClienteProdutoTest {
 
@@ -21,6 +23,7 @@ public class ClienteProdutoTest {
     }
     @Test
     public void deveArmazenarDadosDoProdutoCorretamente() {
+
         Produto produto = new Produto();
         produto.setId(1);
         produto.setNome("X-Burguer");
