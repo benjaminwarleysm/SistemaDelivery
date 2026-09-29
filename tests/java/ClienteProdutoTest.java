@@ -19,7 +19,6 @@ public class ClienteProdutoTest {
         assertEquals("(51) 99999-1111", cliente.getTelefone());
         assertEquals("Rua das Flores, 123", cliente.getEndereco());
     }
-
     @Test
     public void deveArmazenarDadosDoProdutoCorretamente() {
         Produto produto = new Produto();
