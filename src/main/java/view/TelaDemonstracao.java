@@ -45,21 +45,22 @@ public class TelaDemonstracao extends JFrame {
     public TelaDemonstracao() {
         setTitle("Sistema de Delivery - Demonstracao");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(950, 700);
+        setSize(980, 730);
         setLocationRelativeTo(null);
         initComponents();
         atualizarTotal();
     }
 
     private void initComponents() {
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout(15, 15));
+        ((JPanel) getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         add(montarPainelCadastros(), BorderLayout.NORTH);
         add(montarPainelPedido(), BorderLayout.CENTER);
         add(montarPainelResumo(), BorderLayout.SOUTH);
     }
 
     private JPanel montarPainelCadastros() {
-        JPanel painel = new JPanel(new GridLayout(1, 3, 10, 10));
+        JPanel painel = new JPanel(new GridLayout(1, 3, 20, 10));
         painel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         painel.add(montarPainelCategoria());
         painel.add(montarPainelProduto());
@@ -70,18 +71,26 @@ public class TelaDemonstracao extends JFrame {
     private JPanel montarPainelCategoria() {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        painel.setBorder(BorderFactory.createTitledBorder("Categoria"));
+        painel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Categoria"),
+                BorderFactory.createEmptyBorder(8, 10, 10, 10)));
 
         txtNomeCategoria = new JTextField();
+        txtNomeCategoria.setMaximumSize(new Dimension(Integer.MAX_VALUE, txtNomeCategoria.getPreferredSize().height));
         JButton btnAdicionar = new JButton("Adicionar Categoria");
+        btnAdicionar.setAlignmentX(Component.LEFT_ALIGNMENT);
         comboCategoria = new JComboBox<>();
 
         btnAdicionar.addActionListener(e -> adicionarCategoria());
 
         painel.add(new JLabel("Nome:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(txtNomeCategoria);
+        painel.add(Box.createVerticalStrut(10));
         painel.add(btnAdicionar);
+        painel.add(Box.createVerticalStrut(15));
         painel.add(new JLabel("Categorias cadastradas:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(comboCategoria);
         return painel;
     }
@@ -89,21 +98,32 @@ public class TelaDemonstracao extends JFrame {
     private JPanel montarPainelProduto() {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        painel.setBorder(BorderFactory.createTitledBorder("Produto"));
+        painel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Produto"),
+                BorderFactory.createEmptyBorder(8, 10, 10, 10)));
 
         txtNomeProduto = new JTextField();
+        txtNomeProduto.setMaximumSize(new Dimension(Integer.MAX_VALUE, txtNomeProduto.getPreferredSize().height));
         txtPrecoProduto = new JTextField();
+        txtPrecoProduto.setMaximumSize(new Dimension(Integer.MAX_VALUE, txtPrecoProduto.getPreferredSize().height));
         JButton btnAdicionar = new JButton("Adicionar Produto");
+        btnAdicionar.setAlignmentX(Component.LEFT_ALIGNMENT);
         comboProduto = new JComboBox<>();
 
         btnAdicionar.addActionListener(e -> adicionarProduto());
 
         painel.add(new JLabel("Nome:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(txtNomeProduto);
+        painel.add(Box.createVerticalStrut(10));
         painel.add(new JLabel("Preco:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(txtPrecoProduto);
+        painel.add(Box.createVerticalStrut(10));
         painel.add(btnAdicionar);
+        painel.add(Box.createVerticalStrut(15));
         painel.add(new JLabel("Produtos cadastrados:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(comboProduto);
         return painel;
     }
@@ -111,32 +131,47 @@ public class TelaDemonstracao extends JFrame {
     private JPanel montarPainelCliente() {
         JPanel painel = new JPanel();
         painel.setLayout(new BoxLayout(painel, BoxLayout.Y_AXIS));
-        painel.setBorder(BorderFactory.createTitledBorder("Cliente"));
+        painel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Cliente"),
+                BorderFactory.createEmptyBorder(8, 10, 10, 10)));
 
         txtNomeCliente = new JTextField();
+        txtNomeCliente.setMaximumSize(new Dimension(Integer.MAX_VALUE, txtNomeCliente.getPreferredSize().height));
         txtTelefoneCliente = new JTextField();
+        txtTelefoneCliente.setMaximumSize(new Dimension(Integer.MAX_VALUE, txtTelefoneCliente.getPreferredSize().height));
         txtEnderecoCliente = new JTextField();
+        txtEnderecoCliente.setMaximumSize(new Dimension(Integer.MAX_VALUE, txtEnderecoCliente.getPreferredSize().height));
         JButton btnCriar = new JButton("Criar Cliente");
+        btnCriar.setAlignmentX(Component.LEFT_ALIGNMENT);
         lblClienteAtual = new JLabel("Nenhum cliente selecionado");
 
         btnCriar.addActionListener(e -> criarCliente());
 
         painel.add(new JLabel("Nome:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(txtNomeCliente);
+        painel.add(Box.createVerticalStrut(10));
         painel.add(new JLabel("Telefone:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(txtTelefoneCliente);
+        painel.add(Box.createVerticalStrut(10));
         painel.add(new JLabel("Endereco:"));
+        painel.add(Box.createVerticalStrut(5));
         painel.add(txtEnderecoCliente);
+        painel.add(Box.createVerticalStrut(10));
         painel.add(btnCriar);
+        painel.add(Box.createVerticalStrut(15));
         painel.add(lblClienteAtual);
         return painel;
     }
 
     private JPanel montarPainelPedido() {
-        JPanel painel = new JPanel(new BorderLayout(5, 5));
-        painel.setBorder(BorderFactory.createTitledBorder("Pedido"));
+        JPanel painel = new JPanel(new BorderLayout(5, 10));
+        painel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Pedido"),
+                BorderFactory.createEmptyBorder(8, 10, 10, 10)));
 
-        JPanel painelItem = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel painelItem = new JPanel(new FlowLayout(FlowLayout.LEFT, 15, 10));
         txtQuantidade = new JTextField(5);
         comboFormaPagamento = new JComboBox<>(new String[]{"Dinheiro", "Cartao", "Pix"});
         JButton btnAdicionarItem = new JButton("Adicionar Item ao Pedido");
@@ -148,6 +183,7 @@ public class TelaDemonstracao extends JFrame {
         painelItem.add(new JLabel("Quantidade:"));
         painelItem.add(txtQuantidade);
         painelItem.add(btnAdicionarItem);
+        painelItem.add(Box.createHorizontalStrut(25));
         painelItem.add(new JLabel("Forma de Pagamento:"));
         painelItem.add(comboFormaPagamento);
         painelItem.add(btnFinalizar);
@@ -157,6 +193,7 @@ public class TelaDemonstracao extends JFrame {
 
         lblTotal = new JLabel("Total: R$ 0,00");
         lblTotal.setFont(lblTotal.getFont().deriveFont(Font.BOLD, 14f));
+        lblTotal.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
         painel.add(painelItem, BorderLayout.NORTH);
         painel.add(new JScrollPane(tabelaItens), BorderLayout.CENTER);
@@ -166,7 +203,9 @@ public class TelaDemonstracao extends JFrame {
 
     private JPanel montarPainelResumo() {
         JPanel painel = new JPanel(new BorderLayout());
-        painel.setBorder(BorderFactory.createTitledBorder("Pedidos Finalizados"));
+        painel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Pedidos Finalizados"),
+                BorderFactory.createEmptyBorder(8, 10, 10, 10)));
         areaResumoPedidos = new JTextArea(6, 0);
         areaResumoPedidos.setEditable(false);
         painel.add(new JScrollPane(areaResumoPedidos), BorderLayout.CENTER);
