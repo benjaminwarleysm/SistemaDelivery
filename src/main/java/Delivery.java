@@ -35,7 +35,7 @@ public class Delivery {
         ItemPedido item = new ItemPedido(xBurguer.getId(), xBurguer.getNome(), 2, xBurguer.getPreco());
         pedido.adicionarItem(item);
 
-        System.out.println("=== Sistema de Delivery ===");
+        System.out.println("Sistema de Delivery");
         System.out.println("Categoria: " + categoriaLanches);
         System.out.println("Produto: " + xBurguer);
         System.out.println("Cliente: " + cliente);

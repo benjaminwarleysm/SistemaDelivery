@@ -20,4 +20,4 @@ jobs:
           distribution: 'temurin'
 
       - name: Compilar o projeto e rodar os testes unitarios
-        run: mvn -f 03_Codigo_Java/pom.xml test
+        run: mvn test
